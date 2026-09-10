@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Официальный сайт ФК Севастополь — новости, состав, турнирная таблица, календарь матчей, медиа, билеты.">
+    <meta name="theme-color" content="#003366">
+    <title>ФК Севастополь — Официальный сайт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+</head>
+<body>
+    <a href="#main" class="skip-link">Перейти к основному контенту</a>
+    
+    <header class="header" role="banner">
+        <div class="header__top">
+            <div class="container">
+                <div class="header__top-inner">
+                    <div class="header__social">
+                        <a href="https://vk.com/fcsevastopol_ru" target="_blank" rel="noopener" aria-label="ВКонтакте" class="social-link">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22.676 0H1.324C.594 0 0 .593 0 1.324v21.352C0 23.407.593 24 1.324 24h11.494v-9.294H9.69V15.34h3.13V9.797c0-3.116 1.897-4.815 4.674-4.815 1.324 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.63H16.56V24h6.116c.733 0 1.325-.592 1.325-1.324V1.324C24 .594 23.407 0 22.676 0z"/></svg>
+                        </a>
+                        <a href="https://t.me/fcsevastopol" target="_blank" rel="noopener" aria-label="Telegram" class="social-link">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M23.998 6.184a21.62 21.62 0 0 1-2.234.755 10.85 10.85 0 0 0 4.777-6.035 21.75 21.75 0 0 1-6.89 2.64 10.83 10.83 0 0 0-18.57 9.96A10.8 10.8 0 0 0 1.78 14.23a10.84 10.84 0 0 0 3.295 8.395 10.84 10.84 0 0 1-4.9-.7v.13a10.84 10.84 0 0 0 8.737 6.28 10.83 10.83 0 0 1-5.382.21 10.82 10.82 0 0 0 10.146 7.515A21.69 21.69 0 0 1 0 12.185a15.02 15.02 0 0 0 23.31 5.025 15.08 15.08 0 0 0 4.898-9.087c0-.31-.004-.62-.01-.93a10.7 10.7 0 0 0 2.438-2.54A10.6 10.6 0 0 0 23.998 6.184z"/></svg>
+                        </a>
+                        <a href="https://rutube.ru/channel/40269762/" target="_blank" rel="noopener" aria-label="RuTube" class="social-link">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M23.5 7.5c0-2.5-2-4.5-4.5-4.5h-13C4 3 2 5 2 7.5v9C2 19 4 21 6.5 21h13c2.5 0 4.5-2 4.5-4.5v-9zM8 15.5V8.5l7 3.5-7 3.5z"/></svg>
+                        </a>
+                    </div>
+                    <div class="header__time" id="currentTime"></div>
+                </div>
+            </div>
+        </div>
+        <nav class="header__nav" role="navigation" aria-label="Главное меню">
+            <div class="container">
+                <a href="/" class="header__logo" aria-label="ФК Севастополь - главная">
+                    <svg class="header__logo-icon" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle cx="60" cy="60" r="58" fill="#003366"/>
+                        <text x="60" y="72" font-family="Russo One, sans-serif" font-size="40" fill="#FFD700" text-anchor="middle" font-weight="700">ФК</text>
+                        <text x="60" y="100" font-family="Russo One, sans-serif" font-size="18" fill="#FFD700" text-anchor="middle">СЕВАСТОПОЛЬ</text>
+                    </svg>
+                    <span class="header__logo-text">ФК Севастополь</span>
+                </a>
+                <button class="header__burger" aria-expanded="false" aria-controls="mainMenu" aria-label="Открыть меню">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+                <ul class="header__menu" id="mainMenu" role="menubar">
+                    <li role="none"><a href="/" class="header__link" role="menuitem">Главная</a></li>
+                    <li role="none" class="has-dropdown">
+                        <button class="header__link header__dropdown-btn" aria-haspopup="true" aria-expanded="false" role="menuitem">Новости</button>
+                        <ul class="header__dropdown" role="menu">
+                            <li role="none"><a href="/news/club.html" role="menuitem">Новости клуба</a></li>
+                            <li role="none"><a href="/news/interviews.html" role="menuitem">Интервью</a></li>
+                            <li role="none"><a href="/news/reviews.html" role="menuitem">Обзоры матчей</a></li>
+                            <li role="none"><a href="/news/sevastopol2.html" role="menuitem">Севастополь-2</a></li>
+                            <li role="none"><a href="/news/press.html" role="menuitem">Обзор прессы</a></li>
+                            <li role="none"><a href="/news/history.html" role="menuitem">Они — наша история!</a></li>
+                        </ul>
+                    </li>
+                    <li role="none" class="has-dropdown">
+                        <button class="header__link header__dropdown-btn" aria-haspopup="true" aria-expanded="false" role="menuitem">Клуб</button>
+                        <ul class="header__dropdown" role="menu">
+                            <li role="none"><a href="/club/history.html" role="menuitem">История</a></li>
+                            <li role="none"><a href="/club/symbols.html" role="menuitem">Символика</a></li>
+                            <li role="none"><a href="/club/management.html" role="menuitem">Руководство и администрация</a></li>
+                            <li role="none"><a href="/club/stadium.html" role="menuitem">Стадион</a></li>
+                            <li role="none"><a href="/club/accreditation.html" role="menuitem">Аккредитация СМИ</a></li>
+                            <li role="none"><a href="/club/contacts.html" role="menuitem">Контакты</a></li>
+                        </ul>
+                    </li>
+                    <li role="none" class="has-dropdown">
+                        <button class="header__link header__dropdown-btn" aria-haspopup="true" aria-expanded="false" role="menuitem">Команда</button>
+                        <ul class="header__dropdown" role="menu">
+                            <li role="none"><a href="/team/players.html" role="menuitem">Игроки</a></li>
+                            <li role="none"><a href="/team/coaches.html" role="menuitem">Тренеры и персонал</a></li>
+                            <li role="none"><a href="/team/sevastopol2.html" role="menuitem">Севастополь-2</a></li>
+                        </ul>
+                    </li>
+                    <li role="none" class="has-dropdown">
+                        <button class="header__link header__dropdown-btn" aria-haspopup="true" aria-expanded="false" role="menuitem">Сезон</button>
+                        <ul class="header__dropdown" role="menu">
+                            <li role="none"><a href="/season/standings.html" role="menuitem">Турнирная таблица</a></li>
+                            <li role="none"><a href="/season/calendar.html" role="menuitem">Календарь игр</a></li>
+                            <li role="none"><a href="/season/chess.html" role="menuitem">Шахматка</a></li>
+                            <li role="none"><a href="/season/broadcast.html" role="menuitem">Трансляция матчей</a></li>
+                            <li role="none" class="dropdown-divider"></li>
+                            <li role="none"><a href="/season/league2.html" role="menuitem">Лига Содружества</a></li>
+                        </ul>
+                    </li>
+                    <li role="none" class="has-dropdown">
+                        <button class="header__link header__dropdown-btn" aria-haspopup="true" aria-expanded="false" role="menuitem">Медиа</button>
+                        <ul class="header__dropdown" role="menu">
+                            <li role="none"><a href="/media/photos.html" role="menuitem">Фото</a></li>
+                            <li role="none"><a href="/media/video.html" role="menuitem">Видео</a></li>
+                            <li role="none"><a href="/media/programs.html" role="menuitem">Программки</a></li>
+                        </ul>
+                    </li>
+                    <li role="none"><a href="/partners.html" class="header__link" role="menuitem">Партнеры</a></li>
+                    <li role="none" class="has-dropdown">
+                        <button class="header__link header__dropdown-btn" aria-haspopup="true" aria-expanded="false" role="menuitem">Fan Zone</button>
+                        <ul class="header__dropdown" role="menu">
+                            <li role="none"><a href="/fan/tickets.html" role="menuitem">Билеты и абонементы</a></li>
+                            <li role="none"><a href="https://sevastopol.kassa24.ru/event/fk-sevastopol-fk-astrahan-kopia#sh" target="_blank" rel="noopener" role="menuitem">Билеты онлайн</a></li>
+                            <li role="none"><a href="https://sevcsp.ru/vip-na-matchi-futbolnogo-kluba-sevastopol/" target="_blank" rel="noopener" role="menuitem">VIP-трибуна</a></li>
+                            <li role="none"><a href="/fan/rules.html" role="menuitem">Правила пользования сайтом</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero__content">
+                    <h1 id="hero-title" class="hero__title">ФК Севастополь</h1>
+                    <p class="hero__subtitle">LEON — Вторая лига Б, группа 1</p>
+                    <div class="hero__stats">
+                        <div class="stat">
+                            <span class="stat__value" id="currentPosition">1</span>
+                            <span class="stat__label">место в таблице</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__value" id="currentPoints">50</span>
+                            <span class="stat__label">очков</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__value" id="currentMatches">21</span>
+                            <span class="stat__label">игр сыграно</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__value" id="currentGD">+21</span>
+                            <span class="stat__label">разница мячей</span>
+                        </div>
+                    </div>
+                    <a href="#next-match" class="btn btn--primary btn--large">Ближайший матч</a>
+                </div>
+            </div>
+            <div class="hero__scroll" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+            </div>
+        </section>
+
+        <section id="next-match" class="next-match" aria-labelledby="next-match-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="next-match-title" class="section-title">Ближайший матч</h2>
+                    <a href="/season/calendar.html" class="section-link">Календарь<i class="icon-arrow"></i></a>
+                </header>
+                <article class="match-card match-card--featured" id="nextMatchCard">
+                    <div class="match-card__status match-card__status--upcoming">Предстоит</div>
+                    <div class="match-card__teams">
+                        <div class="match-team match-team--home">
+                            <div class="match-team__crest" aria-hidden="true"></div>
+                            <div class="match-team__info">
+                                <span class="match-team__name">ФК Севастополь</span>
+                                <span class="match-team__city">Севастополь</span>
+                            </div>
+                        </div>
+                        <div class="match-card__vs">
+                            <span class="match-card__score" id="nextMatchScore">— : —</span>
+                            <time class="match-card__datetime" id="nextMatchDateTime"></time>
+                        </div>
+                        <div class="match-team match-team--away">
+                            <div class="match-team__info">
+                                <span class="match-team__name" id="nextMatchOpponent">Рубин Ялта</span>
+                                <span class="match-team__city" id="nextMatchOpponentCity">Ялта</span>
+                            </div>
+                            <div class="match-team__crest" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <div class="match-card__venue" id="nextMatchVenue">Стадион СОК им. 200-летия Севастополя</div>
+                    <a href="#" class="btn btn--outline match-card__link">Матч-центр</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="latest-news" aria-labelledby="news-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="news-title" class="section-title">Последние новости</h2>
+                    <a href="/news/all.html" class="section-link">Все новости<i class="icon-arrow"></i></a>
+                </header>
+                <div class="news-grid" id="newsGrid" role="list"></div>
+            </div>
+        </section>
+
+        <section class="standings-preview" aria-labelledby="standings-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="standings-title" class="section-title">Турнирная таблица</h2>
+                    <a href="/season/standings.html" class="section-link">Подробная таблица<i class="icon-arrow"></i></a>
+                </header>
+                <div class="standings-wrapper">
+                    <table class="standings-table" id="standingsTable" role="table" aria-label="Турнирная таблица LEON Вторая лига Б группа 1">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="standings__col--pos">#</th>
+                                <th scope="col" class="standings__col--team">Команда</th>
+                                <th scope="col" class="standings__col--played">И</th>
+                                <th scope="col" class="standings__col--record">В/Н/П</th>
+                                <th scope="col" class="standings__col--goals">М</th>
+                                <th scope="col" class="standings__col--pts">О</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="top-scorers" aria-labelledby="scorers-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="scorers-title" class="section-title">Бомбардиры</h2>
+                    <a href="/team/players.html" class="section-link">Все игроки<i class="icon-arrow"></i></a>
+                </header>
+                <div class="scorers-grid" id="scorersGrid" role="list"></div>
+            </div>
+        </section>
+
+        <section class="media-preview" aria-labelledby="media-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="media-title" class="section-title">Медиа</h2>
+                    <a href="/media/photos.html" class="section-link">Все альбомы<i class="icon-arrow"></i></a>
+                </header>
+                <div class="media-tabs" role="tablist" aria-label="Типы медиа">
+                    <button class="media-tab media-tab--active" role="tab" aria-selected="true" aria-controls="photos-panel" id="tab-photos">Фото</button>
+                    <button class="media-tab" role="tab" aria-selected="false" aria-controls="video-panel" id="tab-video">Видео</button>
+                </div>
+                <div class="media-panels">
+                    <div class="media-panel media-panel--active" role="tabpanel" id="photos-panel" aria-labelledby="tab-photos">
+                        <div class="gallery-grid" id="galleryGrid" role="list"></div>
+                    </div>
+                    <div class="media-panel" role="tabpanel" id="video-panel" aria-labelledby="tab-video">
+                        <div class="video-grid" id="videoGrid" role="list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners" aria-labelledby="partners-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="partners-title" class="section-title">Партнеры</h2>
+                </header>
+                <div class="partners-grid" id="partnersGrid" role="list"></div>
+            </div>
+        </section>
+
+        <section class="birthdays" aria-labelledby="birthdays-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="birthdays-title" class="section-title">Дни рождения</h2>
+                </header>
+                <div class="birthdays-grid" id="birthdaysGrid" role="list"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="/" class="footer__logo" aria-label="ФК Севастополь - главная">
+                        <svg viewBox="0 0 120 120" aria-hidden="true">
+                            <circle cx="60" cy="60" r="58" fill="#003366"/>
+                            <text x="60" y="72" font-family="Russo One, sans-serif" font-size="40" fill="#FFD700" text-anchor="middle" font-weight="700">ФК</text>
+                            <text x="60" y="100" font-family="Russo One, sans-serif" font-size="18" fill="#FFD700" text-anchor="middle">СЕВАСТОПОЛЬ</text>
+                        </svg>
+                    </a>
+                    <p class="footer__tagline">Официальный сайт футбольного клуба</p>
+                    <div class="footer__social">
+                        <a href="https://vk.com/fcsevastopol_ru" target="_blank" rel="noopener" aria-label="ВКонтакте" class="social-link">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22.676 0H1.324C.594 0 0 .593 0 1.324v21.352C0 23.407.593 24 1.324 24h11.494v-9.294H9.69V15.34h3.13V9.797c0-3.116 1.897-4.815 4.674-4.815 1.324 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.63H16.56V24h6.116c.733 0 1.325-.592 1.325-1.324V1.324C24 .594 23.407 0 22.676 0z"/></svg>
+                        </a>
+                        <a href="https://t.me/fcsevastopol" target="_blank" rel="noopener" aria-label="Telegram" class="social-link">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M23.998 6.184a21.62 21.62 0 0 1-2.234.755 10.85 10.85 0 0 0 4.777-6.035 21.75 21.75 0 0 1-6.89 2.64 10.83 10.83 0 0 0-18.57 9.96A10.8 10.8 0 0 0 1.78 14.23a10.84 10.84 0 0 0 3.295 8.395 10.84 10.84 0 0 1-4.9-.7v.13a10.84 10.84 0 0 0 8.737 6.28 10.83 10.83 0 0 1-5.382.21 10.82 10.82 0 0 0 10.146 7.515A21.69 21.69 0 0 1 0 12.185a15.02 15.02 0 0 0 23.31 5.025 15.08 15.08 0 0 0 4.898-9.087c0-.31-.004-.62-.01-.93a10.7 10.7 0 0 0 2.438-2.54A10.6 10.6 0 0 0 23.998 6.184z"/></svg>
+                        </a>
+                        <a href="https://rutube.ru/channel/40269762/" target="_blank" rel="noopener" aria-label="RuTube" class="social-link">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M23.5 7.5c0-2.5-2-4.5-4.5-4.5h-13C4 3 2 5 2 7.5v9C2 19 4 21 6.5 21h13c2.5 0 4.5-2 4.5-4.5v-9zM8 15.5V8.5l7 3.5-7 3.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <nav class="footer__nav" aria-label="Навигация по сайту">
+                    <div class="footer__col">
+                        <h3 class="footer__heading">Новости</h3>
+                        <ul>
+                            <li><a href="/news/club.html">Новости клуба</a></li>
+                            <li><a href="/news/interviews.html">Интервью</a></li>
+                            <li><a href="/news/reviews.html">Обзоры матчей</a></li>
+                            <li><a href="/news/sevastopol2.html">Севастополь-2</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h3 class="footer__heading">Клуб</h3>
+                        <ul>
+                            <li><a href="/club/history.html">История</a></li>
+                            <li><a href="/club/symbols.html">Символика</a></li>
+                            <li><a href="/club/management.html">Руководство</a></li>
+                            <li><a href="/club/stadium.html">Стадион</a></li>
+                            <li><a href="/club/contacts.html">Контакты</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h3 class="footer__heading">Команда</h3>
+                        <ul>
+                            <li><a href="/team/players.html">Игроки</a></li>
+                            <li><a href="/team/coaches.html">Тренеры</a></li>
+                            <li><a href="/team/sevastopol2.html">Севастополь-2</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h3 class="footer__heading">Сезон</h3>
+                        <ul>
+                            <li><a href="/season/standings.html">Турнирная таблица</a></li>
+                            <li><a href="/season/calendar.html">Календарь</a></li>
+                            <li><a href="/season/chess.html">Шахматка</a></li>
+                            <li><a href="/season/broadcast.html">Трансляции</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="footer__contact">
+                    <h3 class="footer__heading">Контакты</h3>
+                    <address class="footer__address">
+                        <p>г. Севастополь, ул. Генерала Острякова, 7</p>
+                        <p><a href="mailto:office@fcsevastopol.ru">office@fcsevastopol.ru</a></p>
+                        <p><a href="tel:+78692551234">+7 (869) 255-12-34</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2018–2026 ФК «Севастополь». Все права защищены.</p>
+                <p class="footer__credits">Создание сайта: <a href="https://sevfootball.info" target="_blank" rel="noopener">sevsport.info</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Переключить тему" aria-pressed="false" tabindex="0">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

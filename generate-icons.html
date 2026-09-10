@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Icon Generator - ФК Севастополь</title>
+    <style>
+        body { font-family: system-ui; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .icon-preview { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: #fafafa; }
+        .icon-preview img { max-width: 100%; height: auto; border-radius: 4px; }
+        .sizes { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; }
+        .size-item { text-align: center; }
+        button { background: #003366; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #002244; }
+        .download-all { background: #FFD700; color: #003366; }
+        .download-all:hover { background: #E6C200; }
+    </style>
+</head>
+<body>
+    <h1>Генератор иконок ФК Севастополь</h1>
+    <p>Нажмите на иконку, чтобы скачать PNG. Или скачайте все сразу.</p>
+    <button class="download-all" onclick="downloadAll()">Скачать все иконки (ZIP)</button>
+    <div class="sizes" id="icons"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const svgContent = document.getElementById('source-svg')?.outerHTML || `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="source-svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003366"/>
+      <stop offset="100%" style="stop-color:#002244"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#E6C200"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="250" fill="url(#bg)"/>
+  <text x="256" y="310" font-family="Russo One, Arial Black, sans-serif" font-size="180" fill="url(#gold)" text-anchor="middle" font-weight="700">ФК</text>
+  <text x="256" y="385" font-family="Russo One, Arial Black, sans-serif" font-size="60" fill="url(#gold)" text-anchor="middle" font-weight="700">СЕВАСТОПОЛЬ</text>
+  <ellipse cx="256" cy="440" rx="80" ry="25" fill="url(#gold)" opacity="0.3"/>
+</svg>`;
+
+        const container = document.getElementById('icons');
+
+        sizes.forEach(size => {
+            const div = document.createElement('div');
+            div.className = 'size-item';
+            div.innerHTML = `
+                <div class="icon-preview">
+                    <img src="" alt="${size}x${size}" id="icon-${size}">
+                </div>
+                <p><strong>${size}×${size}</strong></p>
+                <button onclick="downloadIcon(${size})">Скачать PNG</button>
+            `;
+            container.appendChild(div);
+            generateIcon(size);
+        });
+
+        function generateIcon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            const img = new Image();
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0, size, size);
+                const dataUrl = canvas.toDataURL('image/png');
+                document.getElementById(`icon-${size}`).src = dataUrl;
+                document.getElementById(`icon-${size}`).dataset.url = dataUrl;
+            };
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgContent)));
+        }
+
+        function downloadIcon(size) {
+            const img = document.getElementById(`icon-${size}`);
+            if (img.dataset.url) {
+                const a = document.createElement('a');
+                a.href = img.dataset.url;
+                a.download = `icon-${size}.png`;
+                a.click();
+            }
+        }
+
+        async function downloadAll() {
+            const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
+            const zip = new JSZip.default();
+
+            for (const size of sizes) {
+                const img = document.getElementById(`icon-${size}`);
+                if (img.dataset.url) {
+                    const base64 = img.dataset.url.split(',')[1];
+                    zip.file(`icon-${size}.png`, base64, { base64: true });
+                }
+            }
+
+            const content = await zip.generateAsync({ type: 'blob' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(content);
+            a.download = 'fcsevastopol-icons.zip';
+            a.click();
+        }
+    </script>
+</body>
+</html>
