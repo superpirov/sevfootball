@@ -1,361 +1,195 @@
-import { loadData } from './data-loader.js';
+const DATA_URL = './data/site-data.json';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-const STORAGE_KEY = 'fcsevastopol-theme';
-const THEME_ATTR = 'data-theme';
-
-function getInitialTheme() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) return stored;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+async function loadData() {
+  try {
+    const r = await fetch(DATA_URL, { cache: 'no-store' });
+    if (!r.ok) throw 0;
+    return await r.json();
+  } catch { return null; }
 }
 
-function applyTheme(theme) {
-    document.documentElement.setAttribute(THEME_ATTR, theme);
-    localStorage.setItem(STORAGE_KEY, theme);
-    updateThemeToggle(theme);
-}
-
-function updateThemeToggle(theme) {
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) {
-        toggle.setAttribute('aria-pressed', theme === 'dark');
-    }
-}
-
+/* theme — dark by default */
 function initTheme() {
-    const theme = getInitialTheme();
-    applyTheme(theme);
-
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) {
-        toggle.addEventListener('click', () => {
-            const newTheme = document.documentElement.getAttribute(THEME_ATTR) === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        });
-        toggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggle.click();
-            }
-        });
-    }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
+  const root = document.documentElement, fab = $('#themeFab');
+  const saved = localStorage.getItem('fcs-theme') || 'dark';
+  root.setAttribute('data-theme', saved);
+  fab.textContent = saved === 'dark' ? '☾' : '☀';
+  fab.setAttribute('aria-pressed', saved === 'dark');
+  fab.onclick = () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('fcs-theme', next);
+    fab.textContent = next === 'dark' ? '☾' : '☀';
+  };
 }
 
-function initMobileMenu() {
-    const burger = document.querySelector('.header__burger');
-    const menu = document.querySelector('.header__menu');
-    const dropdownBtns = document.querySelectorAll('.header__dropdown-btn');
-
-    if (burger && menu) {
-        burger.addEventListener('click', () => {
-            const expanded = burger.getAttribute('aria-expanded') === 'true';
-            burger.setAttribute('aria-expanded', !expanded);
-            menu.classList.toggle('is-open');
-            document.body.style.overflow = expanded ? '' : 'hidden';
-        });
-
-        menu.querySelectorAll('.header__link:not(.header__dropdown-btn)').forEach(link => {
-            link.addEventListener('click', () => {
-                burger.setAttribute('aria-expanded', 'false');
-                menu.classList.remove('is-open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!burger.contains(e.target) && !menu.contains(e.target)) {
-                burger.setAttribute('aria-expanded', 'false');
-                menu.classList.remove('is-open');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-
-    dropdownBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const expanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', !expanded);
-            const parent = btn.closest('.has-dropdown');
-            if (parent) parent.setAttribute('aria-expanded', !expanded);
-        });
-    });
+function initMenu() {
+  const b = $('.burger'), m = $('#mainMenu');
+  b.onclick = () => { const o = m.classList.toggle('open'); b.setAttribute('aria-expanded', o); };
+  $$('#mainMenu a').forEach(a => a.onclick = () => m.classList.remove('open'));
 }
 
-function updateTime() {
-    const timeEl = document.getElementById('currentTime');
-    if (timeEl) {
-        const now = new Date();
-        const options = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-        timeEl.textContent = now.toLocaleTimeString('ru-RU', options) + ' МСК';
-    }
+function initClock() {
+  const el = $('#clock'); if (!el) return;
+  const f = () => { try { el.textContent = new Date().toLocaleTimeString('ru-RU', { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit' }) + ' МСК · Москва'; } catch { } };
+  f(); setInterval(f, 30000);
 }
 
-async function loadAndRender() {
-    try {
-        const data = await loadData();
-        renderNextMatch(data.nextMatch);
-        renderNews(data.news);
-        renderStandings(data.standings);
-        renderScorers(data.scorers);
-        renderGallery(data.gallery);
-        renderVideos(data.videos);
-        renderPartners(data.partners);
-        renderBirthdays(data.birthdays);
-    } catch (error) {
-        console.error('Failed to load data:', error);
-        renderFallbacks();
-    }
+function initCountdown(dateISO) {
+  const t = new Date(dateISO).getTime();
+  const D = $('#cdD'), H = $('#cdH'), M = $('#cdM'), S = $('#cdS'), L = $('#countdownLabel');
+  const tick = () => {
+    let d = t - Date.now();
+    if (d <= 0) { if (L) L.textContent = 'Матч уже начался — поддержи команду на СОК!'; d = 0; }
+    const dd = Math.floor(d / 864e5), hh = Math.floor(d / 36e5) % 24, mm = Math.floor(d / 6e4) % 60, ss = Math.floor(d / 1e3) % 60;
+    if (D) D.textContent = String(dd).padStart(2, '0');
+    if (H) H.textContent = String(hh).padStart(2, '0');
+    if (M) M.textContent = String(mm).padStart(2, '0');
+    if (S) S.textContent = String(ss).padStart(2, '0');
+  };
+  tick(); setInterval(tick, 1000);
 }
 
-function renderNextMatch(match) {
-    const scoreEl = document.getElementById('nextMatchScore');
-    const dateEl = document.getElementById('nextMatchDateTime');
-    const opponentEl = document.getElementById('nextMatchOpponent');
-    const opponentCityEl = document.getElementById('nextMatchOpponentCity');
-    const venueEl = document.getElementById('nextMatchVenue');
-    const statusEl = document.querySelector('#nextMatchCard .match-card__status');
-    const linkEl = document.querySelector('#nextMatchCard .match-card__link');
+const fdate = iso => { try { return new Date(iso).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }); } catch { return ''; } };
+const fshort = iso => { try { return new Date(iso).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' }); } catch { return ''; } };
 
-    if (match) {
-        if (scoreEl) scoreEl.textContent = match.score || '— : —';
-        if (dateEl) dateEl.textContent = formatMatchDate(match.date, match.time);
-        if (opponentEl) opponentEl.textContent = match.opponent;
-        if (opponentCityEl) opponentCityEl.textContent = match.opponentCity;
-        if (venueEl) venueEl.textContent = match.venue;
-        if (statusEl) {
-            statusEl.textContent = getMatchStatusLabel(match.status);
-            statusEl.className = `match-card__status match-card__status--${match.status}`;
-        }
-        if (linkEl) linkEl.href = match.url || '#';
-    }
+function renderTicker(items = []) {
+  const w = $('#tickerInner'); if (!w || !items.length) return;
+  w.innerHTML = [...items, ...items].map(t => `<span>${esc(t)}</span>`).join('');
 }
 
-function getMatchStatusLabel(status) {
-    const labels = { upcoming: 'Предстоит', live: 'В прямом эфире', finished: 'Завершен' };
-    return labels[status] || 'Предстоит';
+function renderHeroStats(stats = []) {
+  const w = $('#heroStats'); if (!w) return;
+  w.innerHTML = stats.map(s => `<div class="hstat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join('');
 }
 
-function formatMatchDate(dateStr, timeStr) {
-    if (!dateStr) return '';
-    const date = new Date(dateStr);
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    let result = date.toLocaleDateString('ru-RU', options);
-    if (timeStr) result += `, ${timeStr}`;
-    return result.charAt(0).toUpperCase() + result.slice(1);
+function renderLastGoals(goals = []) {
+  const w = $('#lastGoals'); if (!w) return;
+  w.innerHTML = goals.map(g => `<div>⚽ ${g.minute}′ — <b>${esc(g.player)}</b></div>`).join('');
 }
 
-function renderNews(news) {
-    const grid = document.getElementById('newsGrid');
-    if (!grid || !news?.length) return;
-
-    grid.innerHTML = news.slice(0, 6).map(item => `
-        <article class="news-card" role="listitem">
-            <div class="news-card__image">
-                ${item.image ? `<img src="${item.image}" alt="" loading="lazy">` : '<div class="placeholder"></div>'}
-            </div>
-            <div class="news-card__content">
-                <div class="news-card__meta">
-                    ${item.category ? `<span class="news-card__category">${item.category}</span>` : ''}
-                    <time datetime="${item.date}">${formatNewsDate(item.date)}</time>
-                </div>
-                <h3 class="news-card__title"><a href="${item.url}">${item.title}</a></h3>
-                <p class="news-card__excerpt">${item.excerpt}</p>
-            </div>
-        </article>
-    `).join('');
+let CAL = [];
+function renderCal(filter = 'all') {
+  const w = $('#calGrid'); if (!w) return;
+  const list = CAL.filter(m => filter === 'all' || m.status === filter);
+  w.innerHTML = list.map(m => {
+    const score = m.status === 'finished' ? `<b>${m.hs}:${m.as}</b>` : '<b>–:–</b>';
+    const when = m.status === 'finished' ? fdate(m.date) : `${fshort(m.date)}${m.time ? ' · ' + m.time : ''}`;
+    return `<article class="cal cal--${m.status}">
+      <div class="cal__top"><span>${esc(m.tour)}${m.note ? ' · ' + esc(m.note) : ''}</span><span class="st st--${m.status}">${m.status === 'finished' ? 'Сыгран' : 'Скоро'}</span></div>
+      <p class="cal__match">${esc(m.home)} ${score} ${esc(m.away)}</p>
+      <p class="cal__meta">${when}</p>
+      <a class="cal__link" href="${esc(m.url)}" target="_blank" rel="noopener">${m.status === 'finished' ? 'Отчёт →' : 'Билеты / детали →'}</a>
+    </article>`;
+  }).join('') || '<p class="hint">Нет матчей.</p>';
 }
 
-function formatNewsDate(dateStr) {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+function renderNews(news = []) {
+  const w = $('#newsGrid'); if (!w) return;
+  w.innerHTML = news.map((n, i) => `<article class="ncard${i === 0 ? ' ncard--top' : ''} reveal">
+    <div class="ncard__img"><img src="${esc(n.image)}" alt="" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="ncard__body"><div class="ncard__meta"><span class="cat">${esc(n.category)}</span><time>${fdate(n.date)}</time></div>
+    <h3><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></h3><p>${esc(n.excerpt)}</p></div>
+  </article>`).join('');
 }
 
-function renderStandings(standings) {
-    const tbody = document.getElementById('standingsBody');
-    if (!tbody || !standings?.length) return;
-
-    tbody.innerHTML = standings.map((team, index) => {
-        const pos = index + 1;
-        let rowClass = '';
-        if (pos === 1) rowClass = 'champion';
-        else if (pos >= standings.length - 1) rowClass = 'relegation';
-
-        return `
-            <tr class="${rowClass}">
-                <td class="standings__col--pos">${pos}</td>
-                <td class="standings__col--team">
-                    <div class="standings-team">
-                        <div class="standings-team__crest" aria-hidden="true"></div>
-                        <span class="standings-team__name">${team.name}</span>
-                    </div>
-                </td>
-                <td class="standings__col--played">${team.played}</td>
-                <td class="standings__col--record">${team.won}/${team.drawn}/${team.lost}</td>
-                <td class="standings__col--goals">${team.goalsFor}-${team.goalsAgainst}</td>
-                <td class="standings__col--pts">${team.points}</td>
-            </tr>
-        `;
-    }).join('');
+function renderTable(rows = []) {
+  const w = $('#standingsBody'); if (!w) return;
+  w.innerHTML = rows.map((t, i) => `<tr class="${t.me ? 'me' : ''}">
+    <td>${i + 1}</td><td><b>${esc(t.name)}</b> <span style="color:var(--dim);font-size:.78rem">${esc(t.city || '')}</span></td>
+    <td>${t.played}</td><td>${t.won}/${t.drawn}/${t.lost}</td><td>${t.goalsFor}–${t.goalsAgainst}</td><td><b>${t.points}</b></td>
+    <td>${(t.form || []).map(x => `<i class="f f--${x.toLowerCase()}">${x}</i>`).join('')}</td></tr>`).join('');
 }
 
-function renderScorers(scorers) {
-    const grid = document.getElementById('scorersGrid');
-    if (!grid || !scorers?.length) return;
-
-    grid.innerHTML = scorers.slice(0, 6).map((scorer, index) => `
-        <article class="scorer-card" role="listitem" style="--rank: ${index + 1};">
-            <span class="scorer-card__rank">${index + 1}</span>
-            ${scorer.photo ? `<img src="${scorer.photo}" alt="" class="scorer-card__photo" loading="lazy">` : '<div class="scorer-card__photo" style="display:flex;align-items:center;justify-content:center;font-size:2rem;">⚽</div>'}
-            <h4 class="scorer-card__name">${scorer.name}</h4>
-            <p class="scorer-card__position">${scorer.position}</p>
-            <span class="scorer-card__goals">${scorer.goals} гол${scorer.goals === 1 ? '' : scorer.goals < 5 ? 'а' : 'ов'}</span>
-        </article>
-    `).join('');
+function renderScorers(list = []) {
+  const w = $('#scorersList'); if (!w) return;
+  w.innerHTML = list.map((s, i) => `<div class="scorer"><span class="scorer__rank">${i + 1}</span>
+    <img src="${esc(s.photo)}" alt="" loading="lazy" onerror="this.style.display='none'">
+    <div><b>№${s.number} · ${esc(s.name)}</b><small>${esc(s.position)}${s.assists ? ' · ' + s.assists + ' голевых' : ''}</small></div>
+    <span class="scorer__g">${s.goals} ⚽</span></div>`).join('');
 }
 
-function renderGallery(items) {
-    const grid = document.getElementById('galleryGrid');
-    if (!grid || !items?.length) return;
-
-    grid.innerHTML = items.slice(0, 9).map(item => `
-        <figure class="gallery-item" role="listitem">
-            <a href="${item.url || item.image}" target="_blank" rel="noopener">
-                <img src="${item.thumb || item.image}" alt="${item.alt || 'Фото'}" loading="lazy">
-            </a>
-        </figure>
-    `).join('');
+let SQUAD = [];
+function renderSquad(f = 'all') {
+  const w = $('#squadGrid'); if (!w) return;
+  w.innerHTML = SQUAD.filter(p => f === 'all' || p.group === f).map(p =>
+    `<article class="player reveal"><div class="player__ph"><span class="player__num">${p.number}</span>
+    <img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="player__body"><b>${esc(p.name)}</b><small>${esc(p.pos)}</small></div></article>`).join('');
+  observeReveals();
 }
 
-function renderVideos(videos) {
-    const grid = document.getElementById('videoGrid');
-    if (!grid || !videos?.length) return;
-
-    grid.innerHTML = videos.slice(0, 4).map(video => `
-        <article class="video-card" role="listitem">
-            <div class="video-card__thumb">
-                ${video.thumb ? `<img src="${video.thumb}" alt="" loading="lazy">` : '<div class="placeholder"></div>'}
-                <div class="video-card__play" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-            </div>
-            <div class="video-card__content">
-                <h4 class="video-card__title"><a href="${video.url}">${video.title}</a></h4>
-                <p class="video-card__meta">${formatNewsDate(video.date)}</p>
-            </div>
-        </article>
-    `).join('');
+function renderTimeline(items = []) {
+  const w = $('#timeline'); if (!w) return;
+  w.innerHTML = items.map(t => `<li><span class="yr">${esc(t.year)}</span><b>${esc(t.title)}</b><p>${esc(t.text)}</p></li>`).join('');
 }
 
-function renderPartners(partners) {
-    const grid = document.getElementById('partnersGrid');
-    if (!grid || !partners?.length) return;
-
-    grid.innerHTML = partners.map(partner => `
-        <a href="${partner.url}" target="_blank" rel="noopener" class="partner-link" role="listitem" aria-label="${partner.name}">
-            ${partner.logo ? `<img src="${partner.logo}" alt="${partner.name}" class="partner-logo" loading="lazy">` : `<span>${partner.name}</span>`}
-        </a>
-    `).join('');
+function renderStadium(s) {
+  const w = $('#stadSpecs'); if (!w || !s) return;
+  w.innerHTML = [['Вместимость', s.capacity], ['Поле', s.pitch], ['Освещение', s.light], ['Адрес', s.address], ['Телефон', s.phone], ['Дерби', 'Рубин Ялта · 22.09']]
+    .map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
 }
 
-function renderBirthdays(birthdays) {
-    const grid = document.getElementById('birthdaysGrid');
-    if (!grid || !birthdays?.length) return;
-
-    grid.innerHTML = birthdays.slice(0, 6).map(person => `
-        <article class="birthday-card" role="listitem">
-            ${person.photo ? `<img src="${person.photo}" alt="" class="birthday-card__photo" loading="lazy">` : '<div class="birthday-card__photo" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;">👤</div>'}
-            <h4 class="birthday-card__name">${person.name}</h4>
-            <p class="birthday-card__role">${person.role}</p>
-            <span class="birthday-card__date">${formatBirthday(person.date)}</span>
-        </article>
-    `).join('');
+function renderTickets(list = []) {
+  const w = $('#ticketCards'); if (!w) return;
+  w.innerHTML = list.map(t => `<div class="ticket${t.hit ? ' ticket--hit' : ''}">${t.hit ? '<span class="ticket__hit">ХИТ</span>' : ''}
+    <b>${esc(t.name)}</b><span class="ticket__price">${esc(t.price)}</span><p>${esc(t.text)}</p></div>`).join('');
 }
 
-function formatBirthday(dateStr) {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+function renderMedia(d) {
+  const ph = $('#photoPanel'), vd = $('#videoPanel'); if (!ph || !vd) return;
+  ph.innerHTML = (d.gallery || []).map(g => `<a class="shot" href="${esc(g.url)}" target="_blank" rel="noopener"><img src="${esc(g.thumb || g.image)}" alt="${esc(g.alt || '')}" loading="lazy"><span>${esc(g.alt || 'Фото')}</span></a>`).join('');
+  vd.innerHTML = (d.videos || []).map(v => `<a class="vid" href="${esc(v.url)}" target="_blank" rel="noopener"><span class="vid__play">▶</span><img src="${esc(v.thumb)}" alt="" loading="lazy"><div><b>${esc(v.title)}</b><small>${fdate(v.date)} · Rutube</small></div></a>`).join('');
 }
 
-function renderFallbacks() {
-    const placeholders = {
-        'newsGrid': '<p style="text-align:center;color:var(--color-text-muted);padding:2rem;">Новости загружаются...</p>',
-        'standingsBody': '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--color-text-muted);">Таблица загружается...</td></tr>',
-        'scorersGrid': '<p style="text-align:center;color:var(--color-text-muted);padding:2rem;">Бомбардиры загружаются...</p>',
-        'galleryGrid': '<p style="text-align:center;color:var(--color-text-muted);padding:2rem;">Фото загружаются...</p>',
-        'videoGrid': '<p style="text-align:center;color:var(--color-text-muted);padding:2rem;">Видео загружаются...</p>',
-        'partnersGrid': '<p style="text-align:center;color:var(--color-text-muted);padding:2rem;">Партнеры загружаются...</p>',
-        'birthdaysGrid': '<p style="text-align:center;color:var(--color-text-muted);padding:2rem;">Дни рождения загружаются...</p>'
-    };
-
-    Object.entries(placeholders).forEach(([id, html]) => {
-        const el = document.getElementById(id);
-        if (el && !el.innerHTML.trim()) el.innerHTML = html;
-    });
+function renderPartners(list = []) {
+  const w = $('#partnersRow'); if (!w) return;
+  w.innerHTML = list.map(p => `<a class="partner" href="${esc(p.url)}" target="_blank" rel="noopener"><img src="${esc(p.logo)}" alt="${esc(p.name)}" loading="lazy"><span><b>${esc(p.name)}</b><br><small>${esc(p.tier || '')}</small></span></a>`).join('');
 }
 
-function initScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('section > .container > *').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-
-    document.documentElement.style.cssText += `
-        .is-visible { opacity: 1 !important; transform: translateY(0) !important; }
-    `;
+function renderContacts(c) {
+  const w = $('#contactList'); if (!w || !c) return;
+  w.innerHTML = [['Организация', esc(c.org)], ['Адрес', esc(c.address)], ['Телефон', esc(c.phone)],
+    ['E-mail', `<a href="mailto:${c.email}">${c.email}</a>`], ['Пресс-атташе', `<a href="mailto:${c.press}">${c.press}</a>`],
+    ['Билеты', `<a href="${c.tickets}" target="_blank" rel="noopener">Kassa24 →</a>`]]
+    .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
 }
 
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-                window.scrollTo({ top: targetPos, behavior: 'smooth' });
-            }
-        });
-    });
+function observeReveals() {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } }), { threshold: .08 });
+  $$('.reveal:not(.vis)').forEach(el => io.observe(el));
 }
 
-function registerSW() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('SW registered:', reg.scope))
-                .catch(err => console.log('SW registration failed:', err));
-        });
-    }
+function initFilters() {
+  $$('[data-cal]').forEach(b => b.onclick = () => { $$('[data-cal]').forEach(x => { x.classList.remove('chip--active'); x.setAttribute('aria-selected', 'false'); }); b.classList.add('chip--active'); b.setAttribute('aria-selected', 'true'); renderCal(b.dataset.cal); });
+  $$('[data-pos]').forEach(b => b.onclick = () => { $$('[data-pos]').forEach(x => { x.classList.remove('chip--active'); x.setAttribute('aria-selected', 'false'); }); b.classList.add('chip--active'); b.setAttribute('aria-selected', 'true'); renderSquad(b.dataset.pos); });
+  $$('[data-media]').forEach(b => b.onclick = () => {
+    $$('[data-media]').forEach(x => { x.classList.remove('chip--active'); x.setAttribute('aria-selected', 'false'); });
+    b.classList.add('chip--active'); b.setAttribute('aria-selected', 'true');
+    const v = b.dataset.media === 'video';
+    $('#photoPanel').hidden = v; $('#videoPanel').hidden = !v;
+  });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    initMobileMenu();
-    updateTime();
-    setInterval(updateTime, 1000);
-    loadAndRender();
-    initScrollAnimations();
-    initSmoothScroll();
-    registerSW();
+document.addEventListener('DOMContentLoaded', async () => {
+  initTheme(); initMenu(); initClock(); initFilters();
+  $('#toTop').onclick = () => scrollTo({ top: 0, behavior: 'smooth' });
+  $('#nlForm').addEventListener('submit', e => { e.preventDefault(); $('#nlMsg').textContent = 'Готово! Первый дайджест придёт после дерби 22.09. ⚽'; e.target.reset(); });
+
+  const d = await loadData();
+  if (!d) { $('#newsGrid').innerHTML = '<p class="hint">Не удалось загрузить data/site-data.json — проверьте GitHub Pages.</p>'; return; }
+
+  renderTicker(d.ticker); renderHeroStats(d.stats); renderLastGoals(d.lastMatch?.goals);
+  CAL = d.calendar || []; renderCal();
+  renderNews(d.news); renderTable(d.standings); renderScorers(d.scorers);
+  if (d.coach) { $('#coachName').textContent = d.coach.name; $('#coachNote').textContent = d.coach.note; }
+  SQUAD = d.squad || []; renderSquad();
+  renderTimeline(d.timeline); renderStadium(d.stadium); renderTickets(d.tickets);
+  renderMedia(d); renderPartners(d.partners); renderContacts(d.contacts);
+  initCountdown(d.nextMatch?.date ? d.nextMatch.date + 'T' + (d.nextMatch.time || '16:00') + ':00+03:00' : '2026-09-22T16:00:00+03:00');
+  observeReveals();
+  if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => { }));
 });
-
-export { applyTheme, getInitialTheme };
