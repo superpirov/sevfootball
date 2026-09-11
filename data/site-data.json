@@ -1,0 +1,197 @@
+{
+  "updated": "2026-09-11T12:00:00+03:00",
+  "season": "LEON — Вторая лига Б, группа 1 · сезон 2026",
+  "nextMatch": {
+    "id": "m9307",
+    "date": "2026-09-22",
+    "time": "16:00",
+    "tour": "24-й тур",
+    "tournament": "LEON — Вторая лига Б, группа 1",
+    "home": "Севастополь",
+    "away": "Рубин Ялта",
+    "opponent": "Рубин Ялта",
+    "opponentCity": "Ялта · крымское дерби",
+    "venue": "СОК им. 200-летия Севастополя, ул. Брестская, 21",
+    "status": "upcoming",
+    "score": "— : —",
+    "url": "https://sevastopol.kassa24.ru/",
+    "ticketsUrl": "https://sevastopol.kassa24.ru/"
+  },
+  "lastMatch": {
+    "id": "m9305",
+    "date": "2026-09-05",
+    "time": "16:00",
+    "tour": "22-й тур",
+    "tournament": "LEON — Вторая лига Б, группа 1",
+    "home": "Севастополь",
+    "away": "Кызылташ",
+    "homeCity": "Севастополь",
+    "awayCity": "Бахчисарай",
+    "homeScore": 2,
+    "awayScore": 1,
+    "venue": "СОК им. 200-летия Севастополя · 720 зрителей · +27°C",
+    "status": "finished",
+    "reportUrl": "https://www.fcsevastopol.ru/news/8152.html",
+    "goals": [
+      { "minute": 34, "player": "Дмитрий Иванов", "team": "home" },
+      { "minute": 61, "player": "Кызылташ", "team": "away" },
+      { "minute": 78, "player": "Редван Османов", "team": "home" }
+    ]
+  },
+  "ticker": [
+    "22-й тур · Севастополь 2:1 Кызылташ",
+    "21-й тур · Севастополь 1:0 Спартак-Нальчик",
+    "20-й тур · Ангушт 0:1 Севастополь",
+    "1-е место · 50 очков после 21 тура",
+    "Следующий матч: 22.09 · Севастополь — Рубин Ялта · крымское дерби",
+    "Иванов — 11 голов в сезоне"
+  ],
+  "stats": [
+    { "value": "1", "label": "место в группе 1" },
+    { "value": "50", "label": "очков · 21 матч" },
+    { "value": "16", "label": "побед в сезоне" },
+    { "value": "+21", "label": "разница 38–17" }
+  ],
+  "news": [
+    { "id": "n8153", "title": "«Авангард» — «Севастополь-2» 2:2. Матч-центр", "excerpt": "Лига «Содружество», 15-я неделя. Дубль дважды отыгрывался в Мелитополе.", "date": "2026-09-06T17:55:00+03:00", "category": "Севастополь-2", "image": "https://www.fcsevastopol.ru/files/news/8153-1.jpg", "url": "https://www.fcsevastopol.ru/news/8153.html" },
+    { "id": "n8152", "title": "«Севастополь» — «Кызылташ» 2:1. Матч-центр", "excerpt": "22-й тур. Голы Иванова и Османова при 720 зрителях на СОК. Лидерство удержано.", "date": "2026-09-05T20:26:00+03:00", "category": "Обзор матча", "image": "https://www.fcsevastopol.ru/files/news/8152-1.jpg", "url": "https://www.fcsevastopol.ru/news/8152.html" },
+    { "id": "n8151", "title": "Видеотрансляция: «Севастополь» — «Кызылташ»", "excerpt": "Прямой эфир матча 22-го тура на клубных ресурсах и Rutube-канале.", "date": "2026-09-05T12:11:00+03:00", "category": "Трансляция", "image": "https://www.fcsevastopol.ru/files/news/8151-1.jpg", "url": "https://www.fcsevastopol.ru/news/8151.html" },
+    { "id": "n8150", "title": "Матч с «Кызылташем» рассудит Василий Смирнов", "excerpt": "Назначена бригада арбитров из Санкт-Петербурга на игру 22-го тура.", "date": "2026-09-04T10:39:00+03:00", "category": "Новости клуба", "image": "https://www.fcsevastopol.ru/files/news/8150-1.jpg", "url": "https://www.fcsevastopol.ru/news/8150.html" },
+    { "id": "n8149", "title": "«Севастополь-2» — «Фрегат» 2:3. Матч-центр", "excerpt": "Лига «Содружество». Боевое поражение дубля дома.", "date": "2026-09-03T19:41:00+03:00", "category": "Севастополь-2", "image": "https://www.fcsevastopol.ru/files/news/8149-1.jpg", "url": "https://www.fcsevastopol.ru/news/8149.html" },
+    { "id": "n8148", "title": "Представляем соперника: «Кызылташ» (Бахчисарай)", "excerpt": "Разбор игры бахчисарайцев перед 22-м туром: форма, лидеры, статистика.", "date": "2026-09-02T15:21:00+03:00", "category": "Анонс", "image": "https://www.fcsevastopol.ru/files/news/8148-1.jpg", "url": "https://www.fcsevastopol.ru/news/8148.html" }
+  ],
+  "standings": [
+    { "name": "Севастополь", "city": "Севастополь", "played": 21, "won": 16, "drawn": 2, "lost": 3, "goalsFor": 38, "goalsAgainst": 17, "points": 50, "form": ["W", "W", "W", "L", "W"], "me": true },
+    { "name": "Шахтёр", "city": "Донецк", "played": 21, "won": 14, "drawn": 4, "lost": 3, "goalsFor": 42, "goalsAgainst": 20, "points": 46, "form": ["W", "D", "W", "W", "D"] },
+    { "name": "Ростов-2", "city": "Ростов-на-Дону", "played": 21, "won": 14, "drawn": 4, "lost": 3, "goalsFor": 45, "goalsAgainst": 16, "points": 46, "form": ["W", "W", "D", "W", "W"] },
+    { "name": "Рубин Ялта", "city": "Ялта", "played": 20, "won": 9, "drawn": 7, "lost": 4, "goalsFor": 29, "goalsAgainst": 19, "points": 34, "form": ["D", "W", "D", "L", "W"] },
+    { "name": "Победа", "city": "Хасавюрт", "played": 20, "won": 10, "drawn": 3, "lost": 7, "goalsFor": 38, "goalsAgainst": 27, "points": 33, "form": ["L", "W", "W", "L", "W"] },
+    { "name": "Кызылташ", "city": "Бахчисарай", "played": 21, "won": 9, "drawn": 4, "lost": 8, "goalsFor": 36, "goalsAgainst": 30, "points": 31, "form": ["L", "W", "L", "W", "L"] },
+    { "name": "Нарт", "city": "Черкесск", "played": 20, "won": 9, "drawn": 3, "lost": 8, "goalsFor": 27, "goalsAgainst": 19, "points": 30, "form": ["W", "L", "D", "W", "L"] },
+    { "name": "Спартак-Нальчик", "city": "Нальчик", "played": 20, "won": 7, "drawn": 7, "lost": 6, "goalsFor": 27, "goalsAgainst": 20, "points": 28, "form": ["L", "D", "W", "D", "L"] },
+    { "name": "Дружба", "city": "Майкоп", "played": 20, "won": 7, "drawn": 6, "lost": 7, "goalsFor": 23, "goalsAgainst": 25, "points": 27, "form": ["D", "D", "W", "L", "D"] },
+    { "name": "Заря", "city": "Луганск", "played": 21, "won": 6, "drawn": 6, "lost": 9, "goalsFor": 24, "goalsAgainst": 30, "points": 24, "form": ["L", "L", "D", "W", "D"] },
+    { "name": "Астрахань", "city": "Астрахань", "played": 20, "won": 5, "drawn": 5, "lost": 10, "goalsFor": 22, "goalsAgainst": 32, "points": 20, "form": ["W", "L", "L", "D", "L"] },
+    { "name": "Нефтяник", "city": "Избербаш", "played": 21, "won": 6, "drawn": 0, "lost": 15, "goalsFor": 19, "goalsAgainst": 57, "points": 18, "form": ["L", "L", "W", "L", "L"] },
+    { "name": "Ангушт", "city": "Назрань", "played": 20, "won": 4, "drawn": 4, "lost": 12, "goalsFor": 9, "goalsAgainst": 21, "points": 16, "form": ["L", "D", "L", "L", "W"] },
+    { "name": "Чайка-М", "city": "Песчанокопское", "played": 21, "won": 4, "drawn": 2, "lost": 15, "goalsFor": 17, "goalsAgainst": 43, "points": 14, "form": ["L", "L", "L", "W", "L"] },
+    { "name": "Динамо-2", "city": "Махачкала", "played": 21, "won": 3, "drawn": 5, "lost": 13, "goalsFor": 19, "goalsAgainst": 39, "points": 14, "form": ["D", "L", "L", "D", "L"] }
+  ],
+  "calendar": [
+    { "tour": "22-й тур", "date": "2026-09-05", "home": "Севастополь", "away": "Кызылташ", "hs": 2, "as": 1, "status": "finished", "url": "https://www.fcsevastopol.ru/news/8152.html" },
+    { "tour": "24-й тур · дома", "date": "2026-09-22", "time": "16:00", "home": "Севастополь", "away": "Рубин Ялта", "status": "upcoming", "note": "крымское дерби", "url": "https://sevastopol.kassa24.ru/" },
+    { "tour": "25-й тур · выезд", "date": "2026-09-26", "time": "18:00", "home": "Ростов-2", "away": "Севастополь", "status": "upcoming", "note": "битва за топ-3", "url": "https://www.fcsevastopol.ru/tournaments/107" },
+    { "tour": "26-й тур · дома", "date": "2026-10-03", "home": "Севастополь", "away": "Заря", "status": "upcoming", "url": "https://www.fcsevastopol.ru/tournaments/107" },
+    { "tour": "27-й тур · выезд", "date": "2026-10-11", "home": "Динамо-2", "away": "Севастополь", "status": "upcoming", "url": "https://www.fcsevastopol.ru/tournaments/107" },
+    { "tour": "28-й тур · дома", "date": "2026-10-17", "home": "Севастополь", "away": "Нефтяник", "status": "upcoming", "url": "https://www.fcsevastopol.ru/tournaments/107" },
+    { "tour": "21-й тур", "date": "2026-08-29", "home": "Севастополь", "away": "Спартак-Нальчик", "hs": 1, "as": 0, "status": "finished", "url": "https://www.fcsevastopol.ru/news/8145.html" },
+    { "tour": "20-й тур", "date": "2026-08-22", "home": "Ангушт", "away": "Севастополь", "hs": 0, "as": 1, "status": "finished", "url": "https://www.fcsevastopol.ru/tournaments/107" }
+  ],
+  "scorers": [
+    { "name": "Дмитрий Иванов", "number": 10, "position": "Нападающий", "goals": 11, "assists": 4, "photo": "https://www.fcsevastopol.ru/files/player/4164-photo_team.jpg" },
+    { "name": "Редван Османов", "number": 8, "position": "Нападающий", "goals": 6, "assists": 3, "photo": "https://www.fcsevastopol.ru/files/player/2454-photo_team.jpg" },
+    { "name": "Вадим Зубавленко", "number": 21, "position": "Полузащитник", "goals": 5, "assists": 5, "photo": "https://www.fcsevastopol.ru/files/player/4471-photo_team.jpg" },
+    { "name": "Владислав Гевлич", "number": 11, "position": "Защитник", "goals": 3, "assists": 2, "photo": "https://www.fcsevastopol.ru/files/player/736-photo_team.jpg" },
+    { "name": "Станислав Рубан", "number": 9, "position": "Нападающий", "goals": 3, "assists": 1, "photo": "https://www.fcsevastopol.ru/files/player/5237-photo_team.jpg" },
+    { "name": "Максим Супрун", "number": 17, "position": "Полузащитник", "goals": 2, "assists": 4, "photo": "https://www.fcsevastopol.ru/files/player/4080-photo_team.jpg" }
+  ],
+  "squad": [
+    { "name": "Ростислав Тыщенко", "number": 1, "pos": "Вратарь", "group": "gk", "photo": "https://www.fcsevastopol.ru/files/player/4516-photo_team.jpg" },
+    { "name": "Рустем Климанов", "number": 22, "pos": "Вратарь", "group": "gk", "photo": "https://www.fcsevastopol.ru/files/player/5610-photo_team.jpg" },
+    { "name": "Максим Вертиев", "number": 91, "pos": "Вратарь", "group": "gk", "photo": "https://www.fcsevastopol.ru/files/player/4662-photo_team.jpg" },
+    { "name": "Серафим Абзалилов", "number": 5, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/5642-photo_team.jpg" },
+    { "name": "Владислав Гевлич", "number": 11, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/736-photo_team.jpg" },
+    { "name": "Борис Белый", "number": 18, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/4485-photo_team.jpg" },
+    { "name": "Анатолий Волков", "number": 20, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/5591-photo_team.jpg" },
+    { "name": "Зеки Алиев", "number": 25, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/3581-photo_team.jpg" },
+    { "name": "Лев Потапов", "number": 37, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/4830-photo_team.jpg" },
+    { "name": "Халид Шахтиев", "number": 40, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/5530-photo_team.jpg" },
+    { "name": "Леонид Загребельный", "number": 44, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/1297-photo_team.jpg" },
+    { "name": "Максим Исаев", "number": 52, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/5656-photo_team.jpg" },
+    { "name": "Алексей Гречкин", "number": 79, "pos": "Защитник", "group": "df", "photo": "https://www.fcsevastopol.ru/files/player/5447-photo_team.jpg" },
+    { "name": "Амет Дугу", "number": 6, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/4037-photo_team.jpg" },
+    { "name": "Виталий Мироненко", "number": 7, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/761-photo_team.jpg" },
+    { "name": "Максим Мясников", "number": 16, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/5272-photo_team.jpg" },
+    { "name": "Максим Супрун", "number": 17, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/4080-photo_team.jpg" },
+    { "name": "Вадим Зубавленко", "number": 21, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/4471-photo_team.jpg" },
+    { "name": "Александр Попов", "number": 23, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/5267-photo_team.jpg" },
+    { "name": "Юрий Максимов", "number": 88, "pos": "Полузащитник", "group": "mf", "photo": "https://www.fcsevastopol.ru/files/player/3880-photo_team.jpg" },
+    { "name": "Редван Османов", "number": 8, "pos": "Нападающий", "group": "fw", "photo": "https://www.fcsevastopol.ru/files/player/2454-photo_team.jpg" },
+    { "name": "Станислав Рубан", "number": 9, "pos": "Нападающий", "group": "fw", "photo": "https://www.fcsevastopol.ru/files/player/5237-photo_team.jpg" },
+    { "name": "Дмитрий Иванов", "number": 10, "pos": "Нападающий", "group": "fw", "photo": "https://www.fcsevastopol.ru/files/player/4164-photo_team.jpg" },
+    { "name": "Дмитрий Пигулевский", "number": 19, "pos": "Нападающий", "group": "fw", "photo": "https://www.fcsevastopol.ru/files/player/4963-photo_team.jpg" },
+    { "name": "Александр Оленёв", "number": 77, "pos": "Нападающий", "group": "fw", "photo": "https://www.fcsevastopol.ru/files/player/5064-photo_team.jpg" },
+    { "name": "Артём Степанович", "number": 99, "pos": "Нападающий", "group": "fw", "photo": "https://www.fcsevastopol.ru/files/player/4773-photo_team.jpg" }
+  ],
+  "coach": {
+    "name": "Станислав Гудзикевич",
+    "role": "Главный тренер",
+    "since": "2018",
+    "note": "Самый титулованный тренер крымского периода: 4 чемпионства КФС, серебро LEON-Второй лиги Б — 2025.",
+    "photo": "https://www.fcsevastopol.ru/files/coach/332-photo_1.jpg"
+  },
+  "timeline": [
+    { "year": "2014", "title": "Основание клуба", "text": "23 июля создан ФК «Севастополь» — преемник команды с историей с 2002 года." },
+    { "year": "2015", "title": "Всекрымский турнир", "text": "Победа во Всекрымском турнире и Суперкубке федераций. Старт эпохи КФС." },
+    { "year": "2017", "title": "Первый титул КФС", "text": "Чемпион Премьер-лиги КФС 2016/17. Начало серии из 4 чемпионств." },
+    { "year": "2019", "title": "Золотой дубль", "text": "Чемпионство + Кубок КФС. Самая титулованная команда Крыма." },
+    { "year": "2023", "title": "Возвращение в Россию", "text": "1 июня — аттестат ФНЛ. 16 июля — победа 3:1 над СКА Ростов-на-Дону." },
+    { "year": "2025", "title": "Серебро Второй лиги Б", "text": "Лучший сезон в новой истории: борьба за золото до последнего тура, 72 очка." },
+    { "year": "2026", "title": "Лидерство", "text": "1-е место в группе 1 после 21 тура. Цель — Дивизион А." }
+  ],
+  "stadium": {
+    "name": "СОК им. 200-летия Севастополя",
+    "address": "г. Севастополь, ул. Брестская, 21",
+    "capacity": "5 588",
+    "pitch": "105 × 68 м",
+    "light": "1 200 люкс",
+    "phone": "+7 (8692) 48-69-90",
+    "photo": "https://www.fcsevastopol.ru/files/gallery/1278/116829.jpg"
+  },
+  "tickets": [
+    { "name": "Стандарт", "price": "от 200 ₽", "text": "Центральные и боковые сектора. Дети до 7 лет — бесплатно." },
+    { "name": "Фанатский сектор", "price": "от 150 ₽", "text": "За воротами. Барабаны, флаги и самая громкая поддержка.", "hit": true },
+    { "name": "VIP-трибуна", "price": "по запросу", "text": "Комфорт, парковка и программа от СевЦСП.", "url": "https://sevcsp.ru/vip-na-matchi-futbolnogo-kluba-sevastopol/" }
+  ],
+  "gallery": [
+    { "id": "g1", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143015.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143015.jpg", "alt": "Севастополь — Кызылташ, 22-й тур", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g2", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143014.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143014.jpg", "alt": "Борьба в центре поля", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g3", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143013.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143013.jpg", "alt": "Атака хозяев", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g4", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143012.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143012.jpg", "alt": "Трибуны СОК", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g5", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143011.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143011.jpg", "alt": "Празднование гола", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g6", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143010.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143010.jpg", "alt": "Фанаты", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g7", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143009.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143009.jpg", "alt": "Момент матча", "url": "https://www.fcsevastopol.ru/gallery/1831.html" },
+    { "id": "g8", "image": "https://www.fcsevastopol.ru/files/gallery/1831/143008.jpg", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143008.jpg", "alt": "Команда перед игрой", "url": "https://www.fcsevastopol.ru/gallery/1831.html" }
+  ],
+  "videos": [
+    { "id": "v1", "title": "Голы: «Севастополь» — «Кызылташ» 2:1", "date": "2026-09-05", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-142974.jpg", "url": "https://rutube.ru/channel/40269762/" },
+    { "id": "v2", "title": "Гол: «Севастополь» — «Спартак-Нальчик» 1:0", "date": "2026-08-29", "thumb": "https://www.fcsevastopol.ru/files/gallery/1828/sm-142875.jpg", "url": "https://rutube.ru/channel/40269762/" },
+    { "id": "v3", "title": "Гол: «Ангушт» — «Севастополь» 0:1", "date": "2026-08-22", "thumb": "https://www.fcsevastopol.ru/files/gallery/1827/sm-142841.png", "url": "https://rutube.ru/channel/40269762/" },
+    { "id": "v4", "title": "Обзор: «Севастополь» — «Астрахань» 3:4", "date": "2026-08-15", "thumb": "https://www.fcsevastopol.ru/files/gallery/1831/sm-143015.jpg", "url": "https://rutube.ru/channel/40269762/" }
+  ],
+  "partners": [
+    { "name": "LEON", "logo": "https://www.fcsevastopol.ru/files/partners/37cf504ba9188af78a2d61bb9f70e614.png", "url": "https://leon.ru/registration?bcode=LIGA2", "tier": "Титульный партнёр лиги" },
+    { "name": "ВТБ", "logo": "https://www.fcsevastopol.ru/files/partners/46a352110accaf20a14035e4b76b2c86.jpg", "url": "https://www.vtb.ru", "tier": "Партнёр" },
+    { "name": "АТАН", "logo": "https://www.fcsevastopol.ru/files/partners/4b4161e302f614467fd3a083766a50a2.png", "url": "https://atan.ru/", "tier": "Партнёр" },
+    { "name": "Царь Хлеб", "logo": "https://www.fcsevastopol.ru/files/partners/6c0952576c8f51219fd2b1fb738f36de.png", "url": "https://tsarhleb.ru/", "tier": "Партнёр" },
+    { "name": "Ямато Деливери", "logo": "https://www.fcsevastopol.ru/files/partners/b95c3f694cb41e603d5dc2b68502bceb.png", "url": "https://yamato-delivery.ru/", "tier": "Партнёр" },
+    { "name": "Вторая лига Б", "logo": "https://www.fcsevastopol.ru/files/partners/e86a9d31f42b56173d10b6e6c15c14ee.png", "url": "https://2b.2fnl.com/", "tier": "Лига" }
+  ],
+  "birthdays": [
+    { "name": "Евгений Прокопенко", "role": "Помощник главного тренера", "date": "1988-09-13", "photo": "https://www.fcsevastopol.ru/files/coach/332-photo_1.jpg" },
+    { "name": "Владислав Гевлич", "role": "Защитник · №11", "date": "1994-09-23", "photo": "https://www.fcsevastopol.ru/files/player/736-photo_team.jpg" },
+    { "name": "Юрий Пластун", "role": "Специалист по ИКТ", "date": "1961-09-24", "photo": "https://www.fcsevastopol.ru/files/coach/309-photo_1.jpg" }
+  ],
+  "contacts": {
+    "org": "АНО «ФК «Севастополь»",
+    "address": "299001, г. Севастополь, ул. Брестская, 21",
+    "phone": "+7 (8692) 48-85-76",
+    "email": "office@fcsevastopol.ru",
+    "press": "s.petrovich@fcsevastopol.ru",
+    "vk": "https://vk.com/fcsevastopol_ru",
+    "tg": "https://t.me/fcsevastopol",
+    "rutube": "https://rutube.ru/channel/40269762/",
+    "tickets": "https://sevastopol.kassa24.ru/",
+    "source": "https://www.fcsevastopol.ru/home/"
+  }
+}

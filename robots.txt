@@ -1,0 +1,18 @@
+# robots.txt for FC Sevastopol
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://superpirov.github.io/sevfootball/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Disallow admin/private areas
+Disallow: /js/
+Disallow: /css/
+Disallow: /data/
+Disallow: /images/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$

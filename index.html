@@ -1,399 +1,276 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ФК «Севастополь» — официальный сайт футбольного клуба</title>
-  <meta name="description" content="Футбольный клуб «Севастополь». Новости, состав, календарь, турнирная таблица LEON-Вторая лига Б. Лидер группы 1!">
-  <meta property="og:title" content="ФК «Севастополь» — лидер Второй лиги Б">
-  <meta property="og:description" content="Новости, состав, матчи и история футбольного клуба «Севастополь»">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/og-cover.svg">
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ФК Севастополь — лидер LEON-Второй лиги Б. Новости, матч-центр, турнирная таблица, состав, билеты, стадион СОК, медиа.">
+    <meta name="theme-color" content="#060d1a">
+    <meta property="og:title" content="ФК Севастополь — официальный фан-сайт">
+    <meta property="og:description" content="Лидер LEON-Второй лиги Б, группа 1. Матч-центр, таблица, состав, билеты.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.fcsevastopol.ru/files/gallery/1831/143015.jpg">
+    <title>ФК Севастополь — лидер Второй лиги Б | Матчи, таблица, состав, билеты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/svg+xml" href="./images/icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32.png">
+    <link rel="apple-touch-icon" href="./images/icon-192.png">
 </head>
 <body>
+    <a href="#main" class="skip-link">Перейти к контенту</a>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="#home" class="brand">
-        <img src="assets/logo.svg" alt="Эмблема ФК Севастополь" class="brand__logo">
-        <span class="brand__text">
-          <span class="brand__title">СЕВАСТОПОЛЬ</span>
-          <span class="brand__sub">футбольный клуб · с 2014</span>
-        </span>
-      </a>
-      <nav class="nav" id="nav">
-        <a href="#match" class="nav__link">Матчи</a>
-        <a href="#table" class="nav__link">Таблица</a>
-        <a href="#squad" class="nav__link">Состав</a>
-        <a href="#news" class="nav__link">Новости</a>
-        <a href="#history" class="nav__link">История</a>
-        <a href="#stadium" class="nav__link">Стадион</a>
-        <a href="#fans" class="nav__link fan-cta">Билеты</a>
-      </nav>
-      <button class="burger" id="burger" aria-label="Открыть меню">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero__bg">
-      <div class="hero__glow hero__glow--1"></div>
-      <div class="hero__glow hero__glow--2"></div>
-      <svg class="hero__waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
-        <path class="wave wave--3" d="M0,224L60,213.3C120,203,240,181,360,186.7C480,192,600,224,720,229.3C840,235,960,213,1080,197.3C1200,181,1320,171,1380,165.3L1440,160L1440,320L0,320Z"></path>
-        <path class="wave wave--2" d="M0,256L80,240C160,224,320,192,480,197.3C640,203,800,245,960,250.7C1120,256,1280,224,1360,208L1440,192L1440,320L0,320Z"></path>
-        <path class="wave wave--1" d="M0,288L120,272C240,256,480,224,720,229.3C960,235,1200,277,1320,293.3L1440,309L1440,320L0,320Z"></path>
-      </svg>
+    <div class="ticker" aria-label="Последние результаты">
+        <span class="ticker__label">● LIVE</span>
+        <div class="ticker__track"><div class="ticker__inner" id="tickerInner"></div></div>
     </div>
 
-    <div class="container hero__content">
-      <div class="hero__left reveal">
-        <div class="hero__badge">
-          <span class="pulse-dot"></span> LEON · Вторая лига Б · группа 1
-        </div>
-        <h1 class="hero__title">
-          ГОРДОСТЬ<br><span class="accent">ГЕРОИЧЕСКОГО<br>ГОРОДА</span>
-        </h1>
-        <p class="hero__subtitle">Футбольный клуб «Севастополь» — самая титулованная команда Крыма и лидер национального первенства.</p>
-        <div class="hero__actions">
-          <a href="#match" class="btn btn--primary">Ближайшие матчи</a>
-          <a href="#squad" class="btn btn--ghost">Состав команды</a>
-        </div>
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__num" data-count="4">0</span>
-            <span class="stat__label">чемпионства Крыма</span>
-          </div>
-          <div class="stat">
-            <span class="stat__num" data-count="3">0</span>
-            <span class="stat__label">Суперкубка КФС</span>
-          </div>
-          <div class="stat">
-            <span class="stat__num" data-count="2025" data-plain="1">0</span>
-            <span class="stat__label">серебро Второй лиги Б</span>
-          </div>
-        </div>
-      </div>
+    <header class="header" role="banner">
+        <nav class="header__nav container" role="navigation" aria-label="Главное меню">
+            <a href="#top" class="brand" aria-label="ФК Севастополь — наверх">
+                <span class="brand__crest" aria-hidden="true">ФК</span>
+                <span class="brand__text"><strong>СЕВАСТОПОЛЬ</strong><small>LEON · Вторая лига Б</small></span>
+            </a>
+            <button class="burger" aria-expanded="false" aria-controls="mainMenu" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="menu" id="mainMenu">
+                <li><a href="#matches">Матчи</a></li>
+                <li><a href="#news">Новости</a></li>
+                <li><a href="#table">Таблица</a></li>
+                <li><a href="#squad">Состав</a></li>
+                <li><a href="#club">Клуб</a></li>
+                <li><a href="#stadium">Стадион</a></li>
+                <li><a href="#media">Медиа</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a class="btn btn--gold btn--sm" href="https://sevastopol.kassa24.ru/" target="_blank" rel="noopener">Билеты</a></li>
+            </ul>
+        </nav>
+    </header>
 
-      <div class="hero__card glass reveal reveal--delay-1">
-        <div class="hero__card-head">
-          <span class="hero__card-tag">СЛЕДУЮЩИЙ МАТЧ · 22 сентября, 16:00</span>
-        </div>
-        <div class="matchup">
-          <div class="matchup__team">
-            <div class="team-crest team-crest--sm">С</div>
-            <span>СЕВАСТОПОЛЬ</span>
-          </div>
-          <div class="matchup__vs">VS</div>
-          <div class="matchup__team">
-            <div class="team-dot"></div>
-            <span>РУБИН ЯЛТА</span>
-          </div>
-        </div>
-        <div class="countdown" id="countdown" data-next-match="2026-09-22T16:00:00+03:00">
-          <div class="cd"><span class="cd__num" id="cd-days">00</span><span class="cd__label">дней</span></div>
-          <div class="cd"><span class="cd__num" id="cd-hours">00</span><span class="cd__label">часов</span></div>
-          <div class="cd"><span class="cd__num" id="cd-mins">00</span><span class="cd__label">минут</span></div>
-          <div class="cd"><span class="cd__num" id="cd-secs">00</span><span class="cd__label">секунд</span></div>
-        </div>
-        <div class="hero__card-foot">
-          <span>🏟 СОК «Севастополь»</span>
-          <span class="leader-chip">👑 1 место · 50 очков</span>
-        </div>
-      </div>
-    </div>
-
-    <a href="#match" class="hero__scroll" aria-label="Листать вниз"><span></span></a>
-  </section>
-
-  <!-- ===== TICKER ===== -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>⚓ ФК СЕВАСТОПОЛЬ</span><span>— ЛИДЕР ВТОРОЙ ЛИГИ Б —</span>
-      <span>🏆 4× ЧЕМПИОН КРЫМА</span><span>—</span>
-      <span>🥈 СЕРЕБРЯНЫЙ ПРИЗЁР ВТОРОЙ ЛИГИ Б 2025</span><span>—</span>
-      <span>⚽ ДОМАШНИЕ МАТЧИ: СОК «СЕВАСТОПОЛЬ»</span><span>—</span>
-      <span>⚓ ФК СЕВАСТОПОЛЬ</span><span>— ЛИДЕР ВТОРОЙ ЛИГИ Б —</span>
-      <span>🏆 4× ЧЕМПИОН КРЫМА</span><span>—</span>
-      <span>🥈 СЕРЕБРЯНЫЙ ПРИЗЁР ВТОРОЙ ЛИГИ Б 2025</span><span>—</span>
-      <span>⚽ ДОМАШНИЕ МАТЧИ: СОК «СЕВАСТОПОЛЬ»</span><span>—</span>
-    </div>
-  </div>
-
-  <!-- ===== MATCHES ===== -->
-  <section class="section" id="match">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">Сезон 2026</span>
-        <h2 class="section__title">Матчи команды</h2>
-      </div>
-
-      <div class="matches-grid">
-        <div class="matches-col reveal">
-          <h3 class="col-title">Ближайшие матчи</h3>
-          <div class="match-list" id="upcoming-list"></div>
-        </div>
-
-        <div class="matches-col reveal reveal--delay-1">
-          <h3 class="col-title">Последние результаты</h3>
-          <div class="result-list" id="results-list"></div>
-
-          <div class="scorers glass">
-            <h3 class="col-title">🥇 Бомбардиры</h3>
-            <ol class="scorers__list">
-              <li><b>Дмитрий Иванов</b><span>нападающий</span><em>11 ⚽</em></li>
-              <li><b>Редван Османов</b><span>нападающий</span><em>6 ⚽</em></li>
-              <li><b>Вадим Зубавленко</b><span>полузащитник</span><em>5 ⚽</em></li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TABLE ===== -->
-  <section class="section section--alt" id="table">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">LEON · Вторая лига Б · группа 1</span>
-        <h2 class="section__title">Турнирная таблица</h2>
-      </div>
-      <div class="table-wrap glass reveal">
-        <table class="league-table">
-          <thead>
-            <tr><th>#</th><th>Команда</th><th>И</th><th>О</th></tr>
-          </thead>
-          <tbody id="league-body"></tbody>
-        </table>
-        <p class="table-note">Данные на сентябрь 2026 · источник: fcsevastopol.ru</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SQUAD ===== -->
-  <section class="section" id="squad">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">Основной состав</span>
-        <h2 class="section__title">Игроки <span class="year-mark">2026</span></h2>
-      </div>
-
-      <div class="filters reveal" id="pos-filters">
-        <button class="chip is-active" data-pos="all">Все</button>
-        <button class="chip" data-pos="gk">Вратари</button>
-        <button class="chip" data-pos="df">Защитники</button>
-        <button class="chip" data-pos="mf">Полузащитники</button>
-        <button class="chip" data-pos="fw">Нападающие</button>
-      </div>
-
-      <div class="squad-grid" id="squad-grid"></div>
-    </div>
-  </section>
-
-  <!-- ===== NEWS ===== -->
-  <section class="section section--alt" id="news">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">Медиа</span>
-        <h2 class="section__title">Новости клуба</h2>
-      </div>
-      <div class="news-grid" id="news-grid"></div>
-      <div class="center reveal">
-        <a class="btn btn--ghost" href="https://www.fcsevastopol.ru/news/" target="_blank" rel="noopener">Все новости на сайте клуба</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HISTORY ===== -->
-  <section class="section" id="history">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">С 23 июля 2014 года</span>
-        <h2 class="section__title">Наша история</h2>
-      </div>
-
-      <div class="history-grid">
-        <div class="timeline reveal">
-          <div class="tl-item">
-            <span class="tl-year">2014</span>
-            <h4>Основание клуба</h4>
-            <p>Клуб создан 23 июля 2014 года как ФК «СКЧФ Севастополь» — преемник севастопольского футбола, ведущий историю с 2002 года.</p>
-          </div>
-          <div class="tl-item">
-            <span class="tl-year">2016</span>
-            <h4>ФК «Севастополь»</h4>
-            <p>Клуб получает современное название и становится завсегдатаем Премьер-лиги Крымского футбольного союза.</p>
-          </div>
-          <div class="tl-item">
-            <span class="tl-year">2017–22</span>
-            <h4>Эра доминирования</h4>
-            <p>Четыре чемпионства ПЛ КФС (2016/17, 2018/19, 2020/21, 2022), Кубок и три Суперкубка Крыма. Самый титулованный клуб полуострова.</p>
-          </div>
-          <div class="tl-item">
-            <span class="tl-year">2023</span>
-            <h4>Возвращение всероссийский уровень</h4>
-            <p>Аттестат ФНЛ и дебют во Второй лиге «Дивизион Б»: победа над СКА Ростов-на-Дону 3:1 на глазах родных трибун.</p>
-          </div>
-          <div class="tl-item">
-            <span class="tl-year">2025</span>
-            <h4>Историческое серебро</h4>
-            <p>Лучший сезон в новейшей истории: борьба за победу до последнего тура и серебро LEON-Второй лиги Б.</p>
-          </div>
-          <div class="tl-item tl-item--now">
-            <span class="tl-year">2026</span>
-            <h4>Мы — лидеры!</h4>
-            <p>«Севастополь» возглавляет таблицу группы 1, опережая «Шахтёр» и «Ростов-2». Боремся за выход в Первую лигу!</p>
-          </div>
-        </div>
-
-        <aside class="trophies reveal reveal--delay-1">
-          <h3 class="col-title">🏆 Витрина достижений</h3>
-          <ul class="trophy-list">
-            <li><span class="trophy-num gold">4</span><div><b>Чемпион ПЛ КФС</b><span>2016/17 · 2018/19 · 2020/21 · 2022</span></div></li>
-            <li><span class="trophy-num silver">3</span><div><b>Суперкубок КФС</b><span>2017 · 2021 · 2023</span></div></li>
-            <li><span class="trophy-num bronze">1</span><div><b>Обладатель Кубка КФС</b><span>2018/19</span></div></li>
-            <li><span class="trophy-num silver">3</span><div><b>Серебро ПЛ КФС</b><span>2015/16 · 2017/18 · 2021/22</span></div></li>
-            <li><span class="trophy-num gold">🥈</span><div><b>Серебро Второй лиги Б</b><span>2025 — лучший результат клуба</span></div></li>
-          </ul>
-          <div class="color-card">
-            <h4>Цвета клуба</h4>
-            <div class="swatches">
-              <span class="swatch swatch--white">Белый</span>
-              <span class="swatch swatch--blue">Синий</span>
+    <main id="main">
+        <!-- HERO -->
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <div class="hero__bg" aria-hidden="true"></div>
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="container hero__grid">
+                <div class="hero__main">
+                    <p class="hero__badge"><span class="pulse"></span> 1-е место · Группа 1 · 50 очков</p>
+                    <h1 id="hero-title" class="hero__title">СЕВАСТО&shy;ПОЛЬ<br><span>ИДЁТ ЗА ПОБЕДОЙ</span></h1>
+                    <p class="hero__sub">Футбольный клуб города-героя. Возвращение на всероссийский уровень, серебро 2025-го и погоня за Дивизионом А — прямо сейчас.</p>
+                    <div class="hero__cta">
+                        <a class="btn btn--gold btn--lg" href="https://sevastopol.kassa24.ru/" target="_blank" rel="noopener">Купить билет · 22.09</a>
+                        <a class="btn btn--ghost btn--lg" href="#matches">Матч-центр</a>
+                    </div>
+                    <div class="countdown" aria-label="До следующего матча">
+                        <p class="countdown__label" id="countdownLabel">До крымского дерби · Севастополь — Рубин Ялта</p>
+                        <div class="countdown__row">
+                            <div class="cd"><b id="cdD">--</b><span>дней</span></div>
+                            <div class="cd"><b id="cdH">--</b><span>часов</span></div>
+                            <div class="cd"><b id="cdM">--</b><span>мин</span></div>
+                            <div class="cd"><b id="cdS">--</b><span>сек</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__side">
+                    <article class="glass match-mini" id="lastMatchCard">
+                        <p class="mini__tag">Последний матч · 22-й тур</p>
+                        <p class="mini__teams">СЕВАСТОПОЛЬ <b>2:1</b> КЫЗЫЛТАШ</p>
+                        <p class="mini__meta">05.09 · СОК · 720 зрителей</p>
+                        <div class="mini__goals" id="lastGoals"></div>
+                        <a class="mini__link" href="https://www.fcsevastopol.ru/news/8152.html" target="_blank" rel="noopener">Отчёт о матче →</a>
+                    </article>
+                    <article class="glass match-mini match-mini--next">
+                        <p class="mini__tag mini__tag--gold">Следующий матч · 24-й тур</p>
+                        <p class="mini__teams">СЕВАСТОПОЛЬ <b>–:–</b> РУБИН ЯЛТА</p>
+                        <p class="mini__meta">22.09 · 16:00 · СОК им. 200-летия</p>
+                        <a class="btn btn--gold btn--sm" href="https://sevastopol.kassa24.ru/" target="_blank" rel="noopener">Билеты онлайн</a>
+                    </article>
+                    <div class="hero__stats" id="heroStats"></div>
+                </div>
             </div>
-            <p>Белый парус и синее море — символ Севастополя на форме клуба с 2014 года.</p>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
+            <a class="hero__scroll" href="#matches" aria-label="Листайте вниз">↓</a>
+        </section>
 
-  <!-- ===== STAFF ===== -->
-  <section class="section section--alt" id="staff">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">Тренерский штаб</span>
-        <h2 class="section__title">Кто ведёт команду к победе</h2>
-      </div>
-      <div class="staff-grid">
-        <div class="staff-card glass reveal">
-          <div class="staff-card__avatar"><span>СГ</span></div>
-          <h4>Станислав Гудзикевич</h4>
-          <p>Главный тренер</p>
-          <small>Возглавляет клуб с октября 2018 года. Архитектор чемпионских и серебряных сезонов.</small>
-        </div>
-        <div class="staff-card glass reveal reveal--delay-1">
-          <div class="staff-card__avatar"><span>ЕП</span></div>
-          <h4>Евгений Прокопенко</h4>
-          <p>Помощник главного тренера</p>
-        </div>
-        <div class="staff-card glass reveal reveal--delay-2">
-          <div class="staff-card__avatar"><span>АС</span></div>
-          <h4>Александр Сокоренко</h4>
-          <p>Тренер по вратарям</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- MATCHES -->
+        <section class="section" id="matches" aria-labelledby="t-matches">
+            <div class="container">
+                <header class="sec-head">
+                    <div><p class="kicker">Матч-центр</p><h2 id="t-matches" class="sec-title">Календарь и результаты</h2></div>
+                    <a class="sec-link" href="https://www.fcsevastopol.ru/tournaments/107" target="_blank" rel="noopener">Все игры на fcsevastopol.ru →</a>
+                </header>
+                <div class="cal-filters" role="tablist" aria-label="Фильтр матчей">
+                    <button class="chip chip--active" data-cal="all" role="tab" aria-selected="true">Все</button>
+                    <button class="chip" data-cal="upcoming" role="tab" aria-selected="false">Предстоящие</button>
+                    <button class="chip" data-cal="finished" role="tab" aria-selected="false">Сыгранные</button>
+                </div>
+                <div class="cal-grid" id="calGrid"></div>
+            </div>
+        </section>
 
-  <!-- ===== STADIUM ===== -->
-  <section class="section stadium" id="stadium">
-    <div class="stadium__bg" aria-hidden="true"></div>
-    <div class="container">
-      <div class="stadium__content reveal">
-        <span class="section__tag">Наш дом</span>
-        <h2 class="section__title">Стадион СОК «Севастополь»</h2>
-        <p>Домашняя арена клуба — Спортивный оздоровительный комплекс «Севастополь» имени 200-летия города. Здесь шумит наш сектор, здесь рождаются победы. 700–1000 преданных болельщиков на каждом матче — и атмосфера, в которой соперникам тяжело.</p>
-        <div class="stadium__facts">
-          <div class="fact"><b>🏟</b><span>СОК «Севастополь»</span><small>главная арена</small></div>
-          <div class="fact"><b>📍</b><span>Севастополь</span><small>героический город</small></div>
-          <div class="fact"><b>🎟</b><span>Билеты и VIP</span><small>в Fan Zone ниже</small></div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- NEWS -->
+        <section class="section section--alt" id="news" aria-labelledby="t-news">
+            <div class="container">
+                <header class="sec-head">
+                    <div><p class="kicker">Пульс клуба</p><h2 id="t-news" class="sec-title">Последние новости</h2></div>
+                    <a class="sec-link" href="https://www.fcsevastopol.ru/news/" target="_blank" rel="noopener">Все новости →</a>
+                </header>
+                <div class="news-grid" id="newsGrid"></div>
+            </div>
+        </section>
 
-  <!-- ===== FAN ZONE ===== -->
-  <section class="section" id="fans">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__tag">Fan Zone</span>
-        <h2 class="section__title">Поддержи команду на трибуне</h2>
-      </div>
-      <div class="fans-grid">
-        <div class="fan-card glass reveal">
-          <div class="fan-card__icon">🎟</div>
-          <h4>Билеты онлайн</h4>
-          <p>Покупайте билеты на домашние матчи не выходя из дома — быстро и без очередей.</p>
-          <a class="btn btn--primary btn--sm" href="https://www.fcsevastopol.ru/fanzone/" target="_blank" rel="noopener">Купить билет</a>
-        </div>
-        <div class="fan-card glass fan-card--hot reveal reveal--delay-1">
-          <div class="fan-card__flag">Хит сезона</div>
-          <div class="fan-card__icon">👑</div>
-          <h4>Абонемент сезона</h4>
-          <p>Все домашние матчи сезона по одной цене. Будьте с командой на пути к вершине!</p>
-          <a class="btn btn--gold btn--sm" href="https://www.fcsevastopol.ru/fanzone/" target="_blank" rel="noopener">Оформить абонемент</a>
-        </div>
-        <div class="fan-card glass reveal reveal--delay-2">
-          <div class="fan-card__icon">📺</div>
-          <h4>Трансляции</h4>
-          <p>Не получается прийти? Смотрите видеотрансляции матчей и повторы на официальных каналах клуба.</p>
-          <a class="btn btn--ghost btn--sm" href="https://vk.ru/fcsevastopol_ru" target="_blank" rel="noopener">Смотреть</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- TABLE -->
+        <section class="section" id="table" aria-labelledby="t-table">
+            <div class="container table-layout">
+                <div>
+                    <header class="sec-head">
+                        <div><p class="kicker">LEON — Вторая лига Б · Группа 1</p><h2 id="t-table" class="sec-title">Турнирная таблица</h2></div>
+                    </header>
+                    <div class="table-wrap glass">
+                        <table class="table" aria-label="Турнирная таблица">
+                            <thead><tr><th>#</th><th>Команда</th><th>И</th><th>В/Н/П</th><th>М</th><th>О</th><th>Форма</th></tr></thead>
+                            <tbody id="standingsBody"></tbody>
+                        </table>
+                    </div>
+                    <p class="hint">Форма: последние 5 матчей · <i class="f f--w">W</i> победа · <i class="f f--d">D</i> ничья · <i class="f f--l">L</i> поражение</p>
+                </div>
+                <aside class="scorers glass" aria-labelledby="t-scorers">
+                    <h3 id="t-scorers" class="side-title">⚽ Бомбардиры</h3>
+                    <div id="scorersList" class="scorers-list"></div>
+                    <div class="coach">
+                        <img id="coachPhoto" src="https://www.fcsevastopol.ru/files/player/4164-photo_team.jpg" alt="Главный тренер" loading="lazy" onerror="this.style.display='none'">
+                        <div><p class="coach__role">Главный тренер</p><p class="coach__name" id="coachName">Станислав Гудзикевич</p><p class="coach__note" id="coachNote"></p></div>
+                    </div>
+                </aside>
+            </div>
+        </section>
 
-  <!-- ===== CONTACTS ===== -->
-  <footer class="footer" id="contacts">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <img src="assets/logo.svg" alt="Эмблема ФК Севастополь" class="footer__logo">
-        <div>
-          <b>ФК «СЕВАСТОПОЛЬ»</b>
-          <p>Футбольный клуб из героического города.<br>Основан 23 июля 2014 года.</p>
-        </div>
-      </div>
-      <div class="footer__col">
-        <h5>Контакты</h5>
-        <p>📍 299001, г. Севастополь,<br>ул. Брестская, 21</p>
-        <p>📞 +7 (8692) 48-85-76</p>
-        <p>✉️ <a href="mailto:office@fcsevastopol.ru">office@fcsevastopol.ru</a></p>
-      </div>
-      <div class="footer__col">
-        <h5>Мы в соцсетях</h5>
-        <div class="socials">
-          <a href="https://vk.ru/fcsevastopol_ru" target="_blank" rel="noopener" class="social">VK</a>
-          <a href="https://t.me/fcsevastopol" target="_blank" rel="noopener" class="social">TG</a>
-          <a href="https://www.fcsevastopol.ru/" target="_blank" rel="noopener" class="social">WWW</a>
-        </div>
-      </div>
-      <div class="footer__col">
-        <h5>Навигация</h5>
-        <a href="#match">Матчи</a>
-        <a href="#table">Таблица</a>
-        <a href="#squad">Состав</a>
-        <a href="#news">Новости</a>
-        <a href="#history">История</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <span>© 2014–2026 ФК «Севастополь». Фан-сайт, не является официальным ресурсом клуба.</span>
-        <span>Дизайн-концепт · GitHub Pages</span>
-      </div>
-    </div>
-  </footer>
+        <!-- SQUAD -->
+        <section class="section section--alt" id="squad" aria-labelledby="t-squad">
+            <div class="container">
+                <header class="sec-head">
+                    <div><p class="kicker">26 игроков · сезон 2026</p><h2 id="t-squad" class="sec-title">Состав команды</h2></div>
+                    <a class="sec-link" href="https://www.fcsevastopol.ru/teams/1-1.html" target="_blank" rel="noopener">Профили на fcsevastopol.ru →</a>
+                </header>
+                <div class="cal-filters" role="tablist" aria-label="Фильтр по амплуа">
+                    <button class="chip chip--active" data-pos="all" role="tab" aria-selected="true">Все</button>
+                    <button class="chip" data-pos="gk" role="tab" aria-selected="false">Вратари</button>
+                    <button class="chip" data-pos="df" role="tab" aria-selected="false">Защитники</button>
+                    <button class="chip" data-pos="mf" role="tab" aria-selected="false">Полузащита</button>
+                    <button class="chip" data-pos="fw" role="tab" aria-selected="false">Нападение</button>
+                </div>
+                <div class="squad-grid" id="squadGrid"></div>
+            </div>
+        </section>
 
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+        <!-- CLUB / HISTORY -->
+        <section class="section" id="club" aria-labelledby="t-club">
+            <div class="container club-grid">
+                <div>
+                    <p class="kicker">С 2014 года</p>
+                    <h2 id="t-club" class="sec-title">Клуб города-героя</h2>
+                    <p class="lead">Основан 23 июля 2014 года. Преемник команды с историей с 2002-го. Самый титулованный клуб Крыма эпохи КФС: 4 чемпионства, Кубок и 3 Суперкубка. С 2023-го — снова во всероссийских соревнованиях, с 2025-го — вице-чемпион LEON-Второй лиги Б.</p>
+                    <ul class="facts">
+                        <li><b>4×</b><span>чемпион Премьер-лиги КФС</span></li>
+                        <li><b>2-е</b><span>место Второй лиги Б — 2025</span></li>
+                        <li><b>8:0</b><span>рекордная победа в КФС</span></li>
+                        <li><b>2014</b><span>год основания</span></li>
+                    </ul>
+                    <div class="club-links">
+                        <a class="btn btn--ghost btn--sm" href="https://www.fcsevastopol.ru/history.html" target="_blank" rel="noopener">Полная история</a>
+                        <a class="btn btn--ghost btn--sm" href="https://www.fcsevastopol.ru/teams/1-3.html" target="_blank" rel="noopener">Севастополь-2</a>
+                        <a class="btn btn--ghost btn--sm" href="https://www.fcsevastopol.ru/video-online.html" target="_blank" rel="noopener">Трансляции</a>
+                    </div>
+                </div>
+                <ol class="timeline" id="timeline"></ol>
+            </div>
+        </section>
+
+        <!-- STADIUM + TICKETS -->
+        <section class="section section--alt" id="stadium" aria-labelledby="t-stad">
+            <div class="container stad-grid">
+                <figure class="stad-photo glass">
+                    <img src="https://www.fcsevastopol.ru/files/gallery/1278/116829.jpg" alt="Стадион СОК Севастополь" loading="lazy" onerror="this.src='https://www.fcsevastopol.ru/files/gallery/1831/143015.jpg'">
+                    <figcaption>СОК им. 200-летия Севастополя · ул. Брестская, 21</figcaption>
+                </figure>
+                <div>
+                    <p class="kicker">Дом команды</p>
+                    <h2 id="t-stad" class="sec-title">Стадион СОК</h2>
+                    <dl class="specs" id="stadSpecs"></dl>
+                    <div class="tickets" id="tickets">
+                        <h3 class="side-title">🎟 Билеты и Fan Zone</h3>
+                        <div class="ticket-cards" id="ticketCards"></div>
+                        <a class="btn btn--gold" href="https://sevastopol.kassa24.ru/" target="_blank" rel="noopener">Купить онлайн · Kassa24</a>
+                        <p class="hint">VIP-трибуна — через <a href="https://sevcsp.ru/vip-na-matchi-futbolnogo-kluba-sevastopol/" target="_blank" rel="noopener">СевЦСП</a>. Приходите за 40 минут: фанатский сектор, аквагрим и розыгрыши в перерыве.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA -->
+        <section class="section" id="media" aria-labelledby="t-media">
+            <div class="container">
+                <header class="sec-head">
+                    <div><p class="kicker">Фото и видео</p><h2 id="t-media" class="sec-title">Медиа</h2></div>
+                    <div class="cal-filters" role="tablist" aria-label="Тип медиа">
+                        <button class="chip chip--active" data-media="photo" role="tab" aria-selected="true">Фото</button>
+                        <button class="chip" data-media="video" role="tab" aria-selected="false">Видео</button>
+                    </div>
+                </header>
+                <div class="media-grid" id="photoPanel"></div>
+                <div class="media-grid media-grid--video" id="videoPanel" hidden></div>
+            </div>
+        </section>
+
+        <!-- PARTNERS -->
+        <section class="section section--alt" id="partners" aria-labelledby="t-part">
+            <div class="container">
+                <p class="kicker">Вместе сильнее</p>
+                <h2 id="t-part" class="sec-title">Партнёры</h2>
+                <div class="partners" id="partnersRow"></div>
+            </div>
+        </section>
+
+        <!-- CONTACTS -->
+        <section class="section" id="contacts" aria-labelledby="t-cont">
+            <div class="container contacts-grid">
+                <div>
+                    <p class="kicker">На связи</p>
+                    <h2 id="t-cont" class="sec-title">Контакты</h2>
+                    <address class="contact-list" id="contactList"></address>
+                    <div class="socials">
+                        <a href="https://vk.com/fcsevastopol_ru" target="_blank" rel="noopener" class="soc">VK</a>
+                        <a href="https://t.me/fcsevastopol" target="_blank" rel="noopener" class="soc">Telegram</a>
+                        <a href="https://rutube.ru/channel/40269762/" target="_blank" rel="noopener" class="soc">Rutube</a>
+                    </div>
+                </div>
+                <form class="glass newsletter" id="nlForm">
+                    <h3 class="side-title">📬 Дайджест «Севастополя»</h3>
+                    <p class="hint">Анонсы матчей, стартовые составы и голы — раз в неделю, без спама.</p>
+                    <label class="fld"><span>E-mail</span><input type="email" name="email" required placeholder="you@mail.ru" autocomplete="email"></label>
+                    <button class="btn btn--gold" type="submit">Подписаться</button>
+                    <p class="hint" id="nlMsg" role="status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__grid">
+            <div>
+                <p class="brand brand--foot"><span class="brand__crest" aria-hidden="true">ФК</span><span class="brand__text"><strong>СЕВАСТОПОЛЬ</strong><small>с 2014 · город-герой</small></span></p>
+                <p class="hint">Фанатский концепт для GitHub Pages. Источник данных и прав — <a href="https://www.fcsevastopol.ru/home/" target="_blank" rel="noopener">fcsevastopol.ru</a>.</p>
+            </div>
+            <nav aria-label="Разделы"><p class="foot-h">Разделы</p><ul class="foot-list"><li><a href="#matches">Матчи</a></li><li><a href="#news">Новости</a></li><li><a href="#table">Таблица</a></li><li><a href="#squad">Состав</a></li></ul></nav>
+            <nav aria-label="Клуб"><p class="foot-h">Клуб</p><ul class="foot-list"><li><a href="#club">История</a></li><li><a href="#stadium">Стадион</a></li><li><a href="#tickets">Билеты</a></li><li><a href="#media">Медиа</a></li></ul></nav>
+            <div><p class="foot-h">Сейчас</p><p class="hint" id="clock">— МСК</p><p class="hint">Обновлено 11.09.2026</p></div>
+        </div>
+        <div class="container footer__bottom"><p>© 2014–2026 ФК «Севастополь» · Сделано болельщиками Севастополя</p><button class="to-top" id="toTop" aria-label="Наверх">↑</button></div>
+    </footer>
+
+    <button class="theme-fab" id="themeFab" aria-label="Переключить тему" aria-pressed="true">☾</button>
+    <script src="./js/main.js" type="module"></script>
 </body>
 </html>
